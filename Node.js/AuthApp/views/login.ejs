@@ -1,0 +1,60 @@
+
+<% var title = 'Authentication Example' %>
+<% include head %>
+
+<h1>Login</h1>
+<%- message %>
+Try accessing <a href="/restricted">/restricted</a>, then authenticate with "tj" and "foobar".
+<form method="post" action="/login" id="authenticate">
+  <p>
+    <label>Username:</label>
+    <input type="text" name="username">
+  </p>
+  <p>
+    <label>Password:</label>
+    <input type="text" name="password">
+  </p>
+  <p>
+    <input type="submit" value="Login">
+  </p>
+  <br/>
+  <div>
+    <label>Scan with Vlobe Pass to authenticate:</label>
+  </div>
+  <img src="<%= barcode %>" alt="QR code not found">
+  <input type="hidden" name="authtoken" id="authtoken">
+  <input type="hidden" name="sessionid" id="sessionid">
+</form>
+<!--
+    Only the browsers WITH ECMAScript modules (aka ES6 modules)
+    support will execute the following script
+-->
+<script type="module">
+  import * as passClient from '/public/pass-client.js';
+
+  (function() {
+    const token = "<%= json.authToken %>";
+    const sessionId = "<%= json.sessionId %>";
+    const serverAPI = "<%= server.API %>";
+
+    passClient.getSessionState(serverAPI, token, sessionId, passClient.submitForm);
+  })();
+</script>
+<!--
+    Only the browsers WITHOUT ES modules support
+    will execute the following script.
+    Browsers WITH ES modules support will ignore it.
+-->
+<script nomodule src="/public/bundle.js"></script>
+<script nomodule>
+  var passClient = require('pass-client');
+
+  (function() {
+    var token = "<%= json.authToken %>";
+    var sessionId = "<%= json.sessionId %>";
+    var serverAPI = "<%= server.API %>";
+
+    passClient.getSessionState(serverAPI, token, sessionId, passClient.submitForm);
+  })();
+</script>
+<% include foot %>
