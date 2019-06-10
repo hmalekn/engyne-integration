@@ -1,4 +1,4 @@
-# Sesamy authentication platform
+# Sesamy Authentication Platform
 Have you ever wondered why we should be forced to use usernames and passwords? It doesn't make sense to remember a sequence of characters in order to authenticate to an application. 
 
 There are solutions such as password generators and password managers, but they still rely on a master password. Multi-factor identification systems add value, but their workflow is either manual or complicated. Single sign-on is another option, but they are hard to adopt. All of the above solutions store your username and passwords and possibly your private information. They seldom are the target of cybersecurity attacks. That puts their users in the risk of losing their private information. 
