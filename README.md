@@ -5,5 +5,5 @@ There are solutions such as password generators and password managers, but they 
 
 Sesamy authentication platform once for all eliminates the risks associated with the username and password. Sesmay platform allows mobile users to authenticate to web, desktop, mobile, smart tv, and gaming consoles applications, or even IoT devices. You don’t need to enter or remember your usernames and passwords anymore, just point and scan the login page and use the fingerprint or face recognition to verify your identity. It’s secure and fast at the same time.
 
-This video displays an inetgration with ServiceNow Service Portal platform:
+This video for example displays how a ServiceNow Service Portal instance have used the Sesamy Authentication platform:
 https://youtu.be/MuiJQYCeVKM
