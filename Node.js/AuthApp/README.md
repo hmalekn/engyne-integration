@@ -48,7 +48,73 @@ This sample app contains multiple views. One of them, [login](views/login.ejs), 
   <img src="<%= barcode %>" alt="QR code not found">
 ```
 
-- Listen for the login authorization event on your client side
+# Listen to the login authorization events
+Your application should poll the Sesamy server to see if any user has scanned the QR code. Each authentication session is associated to two different keys, an authentication token and a session ID that has not initially been assigned to any specific user. In this sample we store these two as two hidden inputs in the [login](views/login.ejs) view:
+
+```html
+  <input type="hidden" name="authtoken" id="authtoken">
+  <input type="hidden" name="sessionid" id="sessionid">
+```
+
+and use this code to populate their value and check the session status:
+ 
+```javascript
+<!--
+    Only the browsers WITH ECMAScript modules (aka ES6 modules)
+    support will execute the following script
+-->
+<script type="module">
+  import * as passClient from '/public/pass-client.js';
+  (function() {
+    const token = "<%= json.authToken %>";
+    const sessionId = "<%= json.sessionId %>";
+    const serverAPI = "<%= server.API %>";
+    passClient.getSessionState(serverAPI, token, sessionId, passClient.submitForm);
+  })();
+</script>
+<!--
+    Only the browsers WITHOUT ES modules support
+    will execute the following script.
+    Browsers WITH ES modules support will ignore it.
+-->
+<script nomodule src="/public/bundle.js"></script>
+<script nomodule>
+  var passClient = require('pass-client');
+  (function() {
+    var token = "<%= json.authToken %>";
+    var sessionId = "<%= json.sessionId %>";
+    var serverAPI = "<%= server.API %>";
+    passClient.getSessionState(serverAPI, token, sessionId, passClient.submitForm);
+  })();
+</script>
+```
+
+Implemetation of getSessionState is in [pass-client.js](public/pass-client.js):
+
+```javascript
+export function getSessionState(serverAPI, authToken, sessionId, callback) {
+    setTimeout(fetchState, interval);
+
+    function fetchState() {
+        fetch(serverAPI + 'getSessionState?token=' + authToken + "&sid=" + sessionId)
+            .then(res => res.json())
+            .then(json => {
+                const result = json.result;
+                console.log('description: ' + json.description);
+                console.log('result: ' + result);
+                if (result == 'waiting')
+                    setTimeout(fetchState, interval);
+                else
+                    callback(authToken, sessionId, result); 
+            })
+            .catch(err => { 
+                console.log(err); 
+                callback(authToken, sessionId, err);
+            });
+    }
+}
+```
+
 - Submit your login form to your server
 - Pass the authentication payload to the authenticare API and get the user information
 - Implement the user mapping logic on your server side and authenticate on behalf of the mapped user. 
