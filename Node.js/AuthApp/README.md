@@ -115,7 +115,21 @@ export function getSessionState(serverAPI, authToken, sessionId, callback) {
 }
 ```
 
-- Submit your login form to your server
+# Submit your login form to your server
+
+Submit your login form after user authorizes the authentication. You will find the logic in [pass-client.js](public/pass-client.js):
+
+```javascript
+export function submitForm(authToken, sessionId, state) {
+    console.log('state: ' + state);
+    if (state == "authorized") {
+       document.getElementById("authtoken").value = authToken;
+       document.getElementById("sessionid").value = sessionId;
+       document.getElementById("authenticate").submit();
+    }
+}
+```
+
 - Pass the authentication payload to the authenticare API and get the user information
 - Implement the user mapping logic on your server side and authenticate on behalf of the mapped user. 
 
