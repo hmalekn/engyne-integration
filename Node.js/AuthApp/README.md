@@ -1,9 +1,11 @@
 # AuthApp - Sample Node.js integration app
 
 AuthApp is a simple Node.js application that represents how a simple web application should integrate with Sesamy Authentication platform.
-# How to integrate?
 
-- Contact us to receive a set of credentials for your application
+# Credentials to integrate with Sesamy platform:
+
+In order to integrate with Sesamy platform, an application should register on a Sesamy authentication platform and receive an application ID and a secret. The application owner should always keep these two secret on its server side. It would be a good idea to keep an encrypted version of them and decrypt them anytime you'd like to make a call. We have stored these two in [server.json](./server.son) file for this sample application. 
+
 - Call an API to get the authentication payload and the QR code for it
 - Render the QR code on your login page
 - Listen for the login authorization event on your client side
@@ -13,4 +15,4 @@ AuthApp is a simple Node.js application that represents how a simple web applica
 
 # Sample code
 
-We try to add sample applications for the supported platforms. We currently have a simple Node.js application that shows how a Node.js application should integrate with Sesamy platform.
+We try to add sample applications for the supported platforms. We currently have a simple Node.js application that shows how a Node.js application should integrate with Sesamy platform. 
