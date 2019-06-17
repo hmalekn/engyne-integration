@@ -2,8 +2,5 @@
     "APP_ID" : "5353484128678730",
     "APP_SECRET" : "eyHt51eLFBUddaFgP2rHzQ==",
 
-
-    "localAPI" : "http://192.168.1.9:8080/api/pass/",
-    "API" : "http://ec2-35-155-203-93.us-west-2.compute.amazonaws.com:8080/api/pass/",
-    "prodAPI" : "https://vlobe.com/api/pass/"
+    "API" : "http://ec2-35-155-203-93.us-west-2.compute.amazonaws.com:8080/api/pass/"
 }
