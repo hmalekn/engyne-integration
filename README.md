@@ -17,7 +17,7 @@ This video for example displays how a ServiceNow Service Portal instance have us
 - Render the QR code on your login page
 - Listen for the login authorization event on your client side
 - Submit your login form to your server
-- Pass the authentication payload to the authenticare API and get the user information
+- Pass the authentication payload to the authenticate API and get the user information
 - Implement the user mapping logic on your server side and authenticate on behalf of the mapped user. 
 
 # Sample code
