@@ -3,7 +3,6 @@
 AuthApp is a simple Node.js application that represents how a simple web application should integrate with Sesamy Authentication platform.
 
 # Credentials to integrate with Sesamy platform:
-
 In order to integrate with Sesamy platform, an application should register on a Sesamy authentication platform and receive an application ID and a secret. The application owner should always keep these two secret on its server side. It would be a good idea to keep an encrypted version of them and decrypt them anytime you'd like to make a call. We have stored these two in [server.json](server.json) file for this sample application. Notice that the same file contains the link to the Sesamy application server. We will use that to make our web service calls.
 
 # Get the authentication payload and the QR code
@@ -116,7 +115,6 @@ export function getSessionState(serverAPI, authToken, sessionId, callback) {
 ```
 
 # Submit your login form to your server
-
 Submit your login form after user authorizes the authentication. You will find the logic in [pass-client.js](public/pass-client.js):
 
 ```javascript
@@ -130,9 +128,43 @@ export function submitForm(authToken, sessionId, state) {
 }
 ```
 
-- Pass the authentication payload to the authenticare API and get the user information
-- Implement the user mapping logic on your server side and authenticate on behalf of the mapped user. 
+# Authenticate the user
+Now that user authorized the authentication, it's time to use the authentication token and the session id to authenticate the user. The authentication logic happend in [index.js])(index.js):
 
-# Sample code
+```javascript
+  authenticate(req.body.username, req.body.password, authenticateSuccess, err => {
+    console.log(err);
+    authenticateVlobePass(req.body.authtoken, req.body.sessionid, authenticateSuccess, authenticateFailure);
+  });
+```
 
-We try to add sample applications for the supported platforms. We currently have a simple Node.js application that shows how a Node.js application should integrate with Sesamy platform. 
+# Map the Sesamy user to your application's internal user
+You will need to implement a mapping logic between the Sesamy user and your internal user. In the real life implementation you should dedicate an enrollment mechanism that will allow an already logged in user to sign up and login with Sesamy. This sample applicaiton is doing it much simpler than that and looks up the Sesamy user's email address in an email list:
+
+```javascript
+// Authenticate using Vlobe pass
+
+function authenticateVlobePass(authToken, sessionId, success, failure) {
+  if (!module.parent) 
+    console.log('Authenticating with Vlobe Pass %s:%s', authToken, sessionId);
+
+  passService.promiseAuthenticate(server, authToken, sessionId)
+  .then(result => {
+    var userId = result.userId;
+    if (userId) {
+      if (!users[userId]) {
+        users[userId] = { userId: userId };
+      }
+      var user = users[userId];
+      user.emailAddress = result.emailAddress;
+      user.displayName = result.displayName;
+      user.model = result.model;
+      user.os = result.os;
+      user.version = result.version;
+      success(user);
+    } else
+      failure("Empty user Id");
+    })
+  .catch(err => failure(err));
+}
+```
