@@ -38,7 +38,7 @@ exports.barcodeURL = function(server, json) {
 ```
 
 # Render the QR code on your login page
-This sample app contains multiple views. One of them, [login](views/login.ejs), is the one that renders the login form. As you can see that view has been modeified to render the Sesamy QR code:
+This sample app contains multiple views. One of them, [login](views/login.ejs), is the one that renders the login form. As you can see that view has been modified to render the Sesamy QR code:
 
 ```html
   <div>
@@ -129,7 +129,7 @@ export function submitForm(authToken, sessionId, state) {
 ```
 
 # Authenticate the user
-Now that user authorized the authentication, it's time to use the authentication token and the session id to authenticate the user. The authentication logic happend in [index.js])(index.js):
+Now that user authorized the authentication, it's time to use the authentication token and the session id to authenticate the user. The authentication logic happened in [index.js])(index.js):
 
 ```javascript
   authenticate(req.body.username, req.body.password, authenticateSuccess, err => {
@@ -139,7 +139,7 @@ Now that user authorized the authentication, it's time to use the authentication
 ```
 
 # Map the Sesamy user to your application's internal user
-You will need to implement a mapping logic between the Sesamy user and your internal user. In the real life implementation you should dedicate an enrollment mechanism that will allow an already logged in user to sign up and login with Sesamy. This sample applicaiton is doing it much simpler than that and looks up the Sesamy user's email address in an email list:
+You will need to implement a mapping logic between the Sesamy user and your internal user. In the real life implementation you should dedicate an enrollment mechanism that will allow an already logged in user to sign up and login with Sesamy. This sample application is doing it much simpler than that and looks up the Sesamy user's email address in an email list:
 
 ```javascript
 // Authenticate using Vlobe pass
