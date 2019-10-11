@@ -1,12 +1,12 @@
 # AuthApp - Sample Node.js integration app
 
-AuthApp is a simple Node.js application that represents how a simple web application should integrate with Sesamy Authentication platform.
+AuthApp is a simple Node.js application that represents how a simple web application should integrate with Engyne Authentication platform.
 
-# Credentials to integrate with Sesamy platform:
-In order to integrate with Sesamy platform, an application should register on a Sesamy authentication platform and receive an application ID and a secret. The application owner should always keep these two secret on its server side. It would be a good idea to keep an encrypted version of them and decrypt them anytime you'd like to make a call. We have stored these two in [server.json](server.json) file for this sample application. Notice that the same file contains the link to the Sesamy application server. We will use that to make our web service calls.
+# Credentials to integrate with Engyne platform:
+In order to integrate with Engyne platform, an application should register on a Engyne authentication platform and receive an application ID and a secret. The application owner should always keep these two secret on its server side. It would be a good idea to keep an encrypted version of them and decrypt them anytime you'd like to make a call. We have stored these two in [server.json](server.json) file for this sample application. Notice that the same file contains the link to the Engyne application server. We will use that to make our web service calls.
 
 # Get the authentication payload and the QR code
-We have included all of the logic to interface with the Sesamy server API at [pass-service.js](pass-service.js). These two functions there are the only things you need to get the authentication payload and the authentication QR code from the Sesamy server:
+We have included all of the logic to interface with the Engyne server API at [pass-service.js](pass-service.js). These two functions there are the only things you need to get the authentication payload and the authentication QR code from the Engyne server:
 
 ```javascript
 exports.promiseAuthInfo = function(server) {
@@ -38,7 +38,7 @@ exports.barcodeURL = function(server, json) {
 ```
 
 # Render the QR code on your login page
-This sample app contains multiple views. One of them, [login](views/login.ejs), is the one that renders the login form. As you can see that view has been modified to render the Sesamy QR code:
+This sample app contains multiple views. One of them, [login](views/login.ejs), is the one that renders the login form. As you can see that view has been modified to render the Engyne QR code:
 
 ```html
   <div>
@@ -48,7 +48,7 @@ This sample app contains multiple views. One of them, [login](views/login.ejs), 
 ```
 
 # Listen to the login authorization events
-Your application should poll the Sesamy server to see if any user has scanned the QR code. Each authentication session is associated to two different keys, an authentication token and a session ID that has not initially been assigned to any specific user. In this sample we store these two as two hidden inputs in the [login](views/login.ejs) view:
+Your application should poll the Engyne server to see if any user has scanned the QR code. Each authentication session is associated to two different keys, an authentication token and a session ID that has not initially been assigned to any specific user. In this sample we store these two as two hidden inputs in the [login](views/login.ejs) view:
 
 ```html
   <input type="hidden" name="authtoken" id="authtoken">
