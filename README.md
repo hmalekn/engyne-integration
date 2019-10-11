@@ -1,12 +1,12 @@
-# Sesamy Authentication Platform
+# Engyne Authentication Platform
 
 Have you ever wondered why we should be forced to use usernames and passwords? It doesn't make sense to remember a sequence of characters in order to authenticate to an application. 
 
 There are solutions such as password generators and password managers, but they still rely on a master password. Multi-factor identification systems add value, but their workflow is either manual or complicated. Single sign-on is another option, but they are hard to adopt. All of the above solutions store your username and passwords and possibly your private information. They are often the target of cybersecurity attacks. That puts their users at risk of losing their private information. 
 
-The Sesamy authentication platform eliminates the risks associated with the username and password once for all. The platform allows mobile users to authenticate to web, desktop, mobile, smart tv, and gaming consoles applications, or even IoT devices. You don’t need to enter or remember your usernames and passwords anymore, just point and scan the login page and use the fingerprint or face recognition to verify your identity. It’s secure and fast at the same time.
+The Engyne authentication platform eliminates the risks associated with the username and password once for all. The platform allows mobile users to authenticate to web, desktop, mobile, smart tv, and gaming consoles applications, or even IoT devices. You don’t need to enter or remember your usernames and passwords anymore, just point and scan the login page and use the fingerprint or face recognition to verify your identity. It’s secure and fast at the same time.
 
-The following video, for example, demonstrates integration of the Sesamy Authentication platform with the Service Portal environment in a ServiceNow instance:
+The following video, for example, demonstrates integration of the Engyne Authentication platform with the Service Portal environment in a ServiceNow instance:
 
 [![Watch the video](https://img.youtube.com/vi/MuiJQYCeVKM/maxresdefault.jpg)](https://youtu.be/MuiJQYCeVKM)
 
@@ -22,4 +22,4 @@ The following video, for example, demonstrates integration of the Sesamy Authent
 
 # Sample code
 
-We try to add sample applications for the supported platforms. We currently have a simple Node.js application that shows how a Node.js application should integrate with Sesamy platform.
+We try to add sample applications for the supported platforms. We currently have a simple Node.js application that shows how a Node.js application should integrate with Engyne platform.
