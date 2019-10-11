@@ -6,9 +6,9 @@ There are solutions such as password generators and password managers, but they 
 
 The Engyne authentication platform eliminates the risks associated with the username and password once for all. The platform allows mobile users to authenticate to web, desktop, mobile, smart tv, and gaming consoles applications, or even IoT devices. You don’t need to enter or remember your usernames and passwords anymore, just point and scan the login page and use the fingerprint or face recognition to verify your identity. It’s secure and fast at the same time.
 
-The following video, for example, demonstrates integration of the Engyne Authentication platform with the Service Portal environment in a ServiceNow instance:
+The following video, for example, demonstrates integration of the Engyne Authentication platform with a sample web application:
 
-[![Watch the video](https://img.youtube.com/vi/MuiJQYCeVKM/maxresdefault.jpg)](https://youtu.be/MuiJQYCeVKM)
+[![Watch the video](https://img.youtube.com/vi/RX1WEGOKedcM/maxresdefault.jpg)](https://www.youtube.com/watch?v=RX1WEGOKedcM)
 
 # How to integrate?
 
