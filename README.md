@@ -8,7 +8,7 @@ The Engyne authentication platform eliminates the risks associated with the user
 
 The following video, for example, demonstrates integration of the Engyne Authentication platform with a sample web application:
 
-[![Watch the video](https://img.youtube.com/vi/RX1WEGOKedcM/maxresdefault.jpg)](https://www.youtube.com/watch?v=RX1WEGOKedcM)
+[![Watch the video](https://img.youtube.com/vi/RX1WEGOKedc/maxresdefault.jpg)](https://www.youtube.com/watch?v=RX1WEGOKedc)
 
 # How to integrate?
 
